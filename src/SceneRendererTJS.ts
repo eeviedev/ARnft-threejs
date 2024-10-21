@@ -88,6 +88,12 @@ export default class SceneRendererTJS {
         this.camera.matrixAutoUpdate = false;
         this.target.addEventListener("getProjectionMatrix", (ev: any) => {
             Utils.setMatrix(this.camera.projectionMatrix, ev.detail.proj);
+
+            // increase the render distance
+            // @ts-ignore
+            this.camera.far = 10000;
+            // @ts-ignore
+            this.camera.updateProjectionMatrix();
         });
         this.scene.add(this.camera);
 
